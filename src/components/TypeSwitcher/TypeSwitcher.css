@@ -1,0 +1,22 @@
+.type-switcher {
+	padding: 10px 0;
+}
+
+.type-switcher__button {
+	height: 46px;
+	width: 130px;
+	border: 0;
+	border-radius: 2px;
+	padding: 0;
+	background-color: #ffffff;
+}
+
+.type-switcher__button:hover {
+	cursor: pointer;
+}
+
+.type-switcher__button_active {
+	background-color: #f0f0f0;
+	pointer-events: none;
+	border-bottom: 2px solid #1297d4;
+}

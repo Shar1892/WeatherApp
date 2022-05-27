@@ -12,6 +12,8 @@ import Weather from '../Weather/Weather';
 function App() {
 	const [currentCity, setCurrentCity] = useState('');
 
+	const [isCurrent, setIsCurrent] = useState(true);
+
 	useEffect(() => {
 		Api.getCurrentWeather('London').then((weather) => {
 			console.log(weather);
@@ -25,12 +27,17 @@ function App() {
 		setCurrentCity(query);
 	};
 
+	const changeStatus = (status) => {
+		setIsCurrent(!status);
+		console.log(status);
+	};
+
 	return (
 		<div className='App'>
 			<Search searchCity={searchCity} />
-			<TypeSwitcher />
+			<TypeSwitcher status={isCurrent} changeStatus={changeStatus} />
 			<City currentCityValue={currentCity} />
-			<Weather />
+			<Weather isCurrent={isCurrent} />
 		</div>
 	);
 }
