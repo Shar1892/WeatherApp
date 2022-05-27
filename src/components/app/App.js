@@ -10,6 +10,8 @@ import City from '../City/City';
 import Weather from '../Weather/Weather';
 
 function App() {
+	const [currentCity, setCurrentCity] = useState('');
+
 	useEffect(() => {
 		Api.getCurrentWeather('London').then((weather) => {
 			console.log(weather);
@@ -19,11 +21,15 @@ function App() {
 		});
 	}, []);
 
+	const searchCity = (query) => {
+		setCurrentCity(query);
+	};
+
 	return (
 		<div className='App'>
-			<Search />
+			<Search searchCity={searchCity} />
 			<TypeSwitcher />
-			<City />
+			<City currentCityValue={currentCity} />
 			<Weather />
 		</div>
 	);
