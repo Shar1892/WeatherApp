@@ -7,7 +7,7 @@ import * as Api from '../../utils/weatherAPI';
 import Search from '../Search/Search';
 import TypeSwitcher from '../TypeSwitcher/TypeSwitcher';
 import City from '../City/City';
-import Weather from '../Weather/Weather';
+import WeatherList from '../WeatherList/WeatherList';
 
 function App() {
 	const [currentCity, setCurrentCity] = useState('London');
@@ -74,7 +74,11 @@ function App() {
 						: weatherForWeek.city.country
 				}
 			/>
-			<Weather isCurrent={isCurrent} />
+			<WeatherList
+				isCurrent={isCurrent}
+				currentWeather={currentWeather}
+				weatherForWeek={weatherForWeek}
+			/>
 		</div>
 	);
 }
