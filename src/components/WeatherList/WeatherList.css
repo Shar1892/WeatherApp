@@ -13,10 +13,32 @@
 	align-items: center;
 }
 
+.weatherList__warning-container {
+	width: 100%;
+	padding: 20px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.weatherList__warning-text {
+	margin: 0;
+	margin-bottom: 20px;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size: 20px;
+	color: #000000;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+}
+
 @media screen and (min-width: 425px) {
 	.weatherList {
 		width: 260px;
 		grid-template-columns: repeat(3, 80px);
+	}
+
+	.weatherList__warning-text {
+		font-size: 26px;
 	}
 }
 
