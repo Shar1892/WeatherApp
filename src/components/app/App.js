@@ -24,6 +24,7 @@ function App() {
 		Api.getWeatherForWeek('London').then((weekWaether) => {
 			console.log(weekWaether);
 			setWeatherForWeek(weekWaether);
+			//setWeatherForWeek(filterWeatherDataByDays(weekWaether));
 		});
 	}, []);
 

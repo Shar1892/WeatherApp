@@ -1,0 +1,24 @@
+.currentDayWeatherCard {
+	width: 80px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0 3px;
+	box-sizing: border-box;
+}
+
+.currentDayWeatherCard__image {
+	width: 45px;
+	height: 45px;
+	object-fit: cover;
+}
+
+.currentDayWeatherCard__text {
+	margin: 0;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size: 22px;
+	color: #757575;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	text-align: center;
+}
