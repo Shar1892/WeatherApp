@@ -1,4 +1,4 @@
-.dayWeatherCard {
+.hoursWeatherCard {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -7,13 +7,13 @@
 	box-sizing: border-box;
 }
 
-.dayWeatherCard__image {
+.hoursWeatherCard__image {
 	width: 45px;
 	height: 45px;
 	object-fit: cover;
 }
 
-.dayWeatherCard__container {
+.hoursWeatherCard__container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -21,7 +21,7 @@
 	padding-bottom: 10px;
 }
 
-.dayWeatherCard__text {
+.hoursWeatherCard__text {
 	margin: 0;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	font-size: 15px;

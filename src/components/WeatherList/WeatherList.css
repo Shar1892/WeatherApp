@@ -32,9 +32,13 @@
 }
 
 @media screen and (min-width: 425px) {
-	.weatherList {
+	/*.weatherList {
 		width: 260px;
 		grid-template-columns: repeat(3, 80px);
+	}*/
+	.weatherList {
+		width: 350px;
+		grid-template-columns: repeat(4, 80px);
 	}
 
 	.weatherList__warning-text {
@@ -43,8 +47,13 @@
 }
 
 @media screen and (min-width: 768px) {
-	.weatherList {
+	/*.weatherList {
 		width: 620px;
 		grid-template-columns: repeat(7, 80px);
+	}*/
+
+	.weatherList {
+		width: 710px;
+		grid-template-columns: repeat(8, 80px);
 	}
 }

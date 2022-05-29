@@ -1,4 +1,4 @@
-import DayWeatherCard from '../DayWeatherCard/DayWeatherCard';
+import HoursWeatherCard from '../HoursWeatherCard/HoursWeatherCard';
 import CurrentDayWeatherCard from '../CurrentDayWeatherCard/CurrentDayWeatherCard';
 
 import './WeatherList.css';
@@ -6,7 +6,7 @@ import './WeatherList.css';
 const WeatherList = ({
 	isCurrent,
 	currentWeather,
-	weatherForWeek,
+	weatherForHours,
 	isNoResult,
 }) => {
 	return (
@@ -20,8 +20,8 @@ const WeatherList = ({
 					{isCurrent ? (
 						<CurrentDayWeatherCard data={currentWeather} />
 					) : (
-						weatherForWeek.list.map((item, i) => (
-							<DayWeatherCard key={item.dt} data={item} />
+						weatherForHours.list.map((item, i) => (
+							<HoursWeatherCard key={item.dt} data={item} />
 						))
 					)}
 				</div>
