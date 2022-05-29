@@ -10,6 +10,8 @@ import City from '../City/City';
 import WeatherList from '../WeatherList/WeatherList';
 import Preloader from '../Preloader/Preloader';
 
+import {getFullCountryName} from '../../utils/utils';
+
 function App() {
 	const [currentCity, setCurrentCity] = useState('');
 	const [isCurrent, setIsCurrent] = useState(true);
@@ -19,39 +21,47 @@ function App() {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const [currentWeather, setCurrentWeather] = useState({});
-	const [weatherForWeek, setWeatherForWeek] = useState({});
+	const [weatherForHours, setWeatherForHours] = useState({});
+
+	const changeCurrentWeather = (city) => {
+		Api.getCurrentWeather(city)
+			.then((weather) => {
+				console.log(weather);
+				setCurrentWeather(weather);
+				if (weather) {
+					setIsNoResult(false);
+				} else {
+					setIsNoResult(true);
+				}
+			})
+			.finally(() => {
+				setIsLoading(false);
+			});
+	};
+
+	const changeHoursWeather = (city) => {
+		Api.getWeatherForHours(city)
+			.then((weekWaether) => {
+				console.log(weekWaether);
+				setWeatherForHours(weekWaether);
+				if (weekWaether) {
+					setIsNoResult(false);
+				} else {
+					setIsNoResult(true);
+				}
+			})
+			.finally(() => {
+				setIsLoading(false);
+			});
+	};
 
 	const searchCity = (query) => {
 		setIsLoading(true);
 		setCurrentCity(query);
 		if (isCurrent) {
-			Api.getCurrentWeather(query)
-				.then((weather) => {
-					console.log(weather);
-					setCurrentWeather(weather);
-					if (weather) {
-						setIsNoResult(false);
-					} else {
-						setIsNoResult(true);
-					}
-				})
-				.finally(() => {
-					setIsLoading(false);
-				});
+			changeCurrentWeather(query);
 		} else {
-			Api.getWeatherForWeek(query)
-				.then((weekWaether) => {
-					console.log(weekWaether);
-					setWeatherForWeek(weekWaether);
-					if (weekWaether) {
-						setIsNoResult(false);
-					} else {
-						setIsNoResult(true);
-					}
-				})
-				.finally(() => {
-					setIsLoading(false);
-				});
+			changeHoursWeather(query);
 		}
 	};
 
@@ -60,33 +70,9 @@ function App() {
 		if (currentCity) {
 			setIsLoading(true);
 			if (status) {
-				Api.getWeatherForWeek(currentCity)
-					.then((weekWaether) => {
-						console.log(weekWaether);
-						setWeatherForWeek(weekWaether);
-						if (weekWaether) {
-							setIsNoResult(false);
-						} else {
-							setIsNoResult(true);
-						}
-					})
-					.finally(() => {
-						setIsLoading(false);
-					});
+				changeHoursWeather(currentCity);
 			} else {
-				Api.getCurrentWeather(currentCity)
-					.then((weather) => {
-						console.log(weather);
-						setCurrentWeather(weather);
-						if (weather) {
-							setIsNoResult(false);
-						} else {
-							setIsNoResult(true);
-						}
-					})
-					.finally(() => {
-						setIsLoading(false);
-					});
+				changeCurrentWeather(currentCity);
 			}
 		}
 	};
@@ -106,21 +92,21 @@ function App() {
 									? 'No data'
 									: isCurrent
 									? currentWeather.name
-									: weatherForWeek.city.name
+									: weatherForHours.city.name
 							}
 							country={
 								isNoResult
 									? 'No data'
 									: isCurrent
-									? currentWeather.sys.country
-									: weatherForWeek.city.country
+									? getFullCountryName(currentWeather.sys.country)
+									: getFullCountryName(weatherForHours.city.country)
 							}
 						/>
 						<WeatherList
 							isNoResult={isNoResult}
 							isCurrent={isCurrent}
 							currentWeather={currentWeather}
-							weatherForWeek={weatherForWeek}
+							weatherForHours={weatherForHours}
 						/>
 					</>
 				)}

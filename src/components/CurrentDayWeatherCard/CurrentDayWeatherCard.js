@@ -1,5 +1,7 @@
 import './CurrentDayWeatherCard.css';
 
+import {formatTemp, formatWeatherDiscription} from '../../utils/utils';
+
 const CurrentDayWeatherCard = ({data}) => {
 	return (
 		<div className='currentDayWeatherCard'>
@@ -8,9 +10,11 @@ const CurrentDayWeatherCard = ({data}) => {
 				alt={data.weather[0].description}
 				className='currentDayWeatherCard__image'
 			/>
-			<p className='currentDayWeatherCard__text'>{data.main.temp}</p>
 			<p className='currentDayWeatherCard__text'>
-				{data.weather[0].description}
+				{`${formatTemp(data.main.temp)}°C`}
+			</p>
+			<p className='currentDayWeatherCard__text'>
+				{formatWeatherDiscription(data.weather[0].description)}
 			</p>
 		</div>
 	);

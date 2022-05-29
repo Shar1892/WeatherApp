@@ -21,7 +21,7 @@ const TypeSwitcher = ({status, changeStatus}) => {
 				}`}
 				onClick={handleChangeStatus}
 			>
-				7 DAY FORECAST
+				48 HOURS FORECAST
 			</button>
 		</div>
 	);
