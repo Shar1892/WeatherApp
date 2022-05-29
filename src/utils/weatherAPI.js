@@ -18,7 +18,7 @@ export const getCurrentWeather = (city) => {
 
 export const getWeatherForWeek = (city) => {
 	return fetch(
-		`${BASE_URL}forecast?q=${city}&units=metric&cnt=7&cnt=7&appid=${API_KEY}`,
+		`${BASE_URL}forecast?q=${city}&units=metric&cnt=7&appid=${API_KEY}`,
 		{
 			method: 'GET',
 			headers: {
