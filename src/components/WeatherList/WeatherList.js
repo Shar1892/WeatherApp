@@ -3,29 +3,31 @@ import CurrentDayWeatherCard from '../CurrentDayWeatherCard/CurrentDayWeatherCar
 
 import './WeatherList.css';
 
-const WeatherList = ({isCurrent, currentWeather, weatherForWeek}) => {
-	/*const filterWeatherDataByDays = (weatherDataByHours) => {
-		let weatherDataByDays = weatherDataByHours.filter((item, index) => {
-			if (index === 0 || !(index % 5)) {
-				return item;
-			}
-		});
-		return weatherDataByDays;
-	};*/
-
+const WeatherList = ({
+	isCurrent,
+	currentWeather,
+	weatherForWeek,
+	isNoResult,
+}) => {
 	return (
-		<div className={`weatherList ${isCurrent ? 'weatherList_single' : ''}`}>
-			{isCurrent ? (
-				<CurrentDayWeatherCard data={currentWeather} />
+		<>
+			{isNoResult ? (
+				<div className='weatherList__warning-container'>
+					<p className='weatherList__warning-text'>No data</p>
+				</div>
 			) : (
-				weatherForWeek.list.map((item, i) => (
-					<DayWeatherCard key={item.dt} data={item} />
-				))
+				<div className={`weatherList ${isCurrent ? 'weatherList_single' : ''}`}>
+					{isCurrent ? (
+						<CurrentDayWeatherCard data={currentWeather} />
+					) : (
+						weatherForWeek.list.map((item, i) => (
+							<DayWeatherCard key={item.dt} data={item} />
+						))
+					)}
+				</div>
 			)}
-		</div>
+		</>
 	);
 };
 
 export default WeatherList;
-
-//weatherForWeek.list.map((item, i) => (
