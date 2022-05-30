@@ -7,7 +7,7 @@
 
 Реализовано на React.js.
 
-Приложение доступно на https://shar1892.github.io/WeatherApp/
+Приложение доступно на https://shar1892.github.io/WeatherApp/ через vpn.
 
 # Инструкция для локального разворота приложения:
 
